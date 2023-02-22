@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block main %}
+<h2>Uploaded Images:</h2>
+<hr/>
+<ol>
+    {% for file in filenames: %}
+    <li>{{ file }}</li>
+    {% endfor %}
+</ol>
+{% endblock %}
