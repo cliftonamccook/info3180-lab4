@@ -112,12 +112,14 @@ def page_not_found(error):
 @app.route('/uploads/<filename>')
 @login_required
 def get_image(filename):
+    """Returns specified image from uploads directory"""
     return send_from_directory(os.path.join(os.getcwd(), app.config['UPLOAD_FOLDER']), filename)
 
 
 @app.route('/files')
 @login_required
 def files():
+    """Lists uploaded filenames"""
     files = get_uploaded_images()
     return render_template('files.html', filenames=files)
 
@@ -125,14 +127,15 @@ def files():
 @app.route('/logout')
 @login_required
 def logout():
+    """Logs out user"""
     logout_user()
     flash("You have successfully logged out")
     return redirect(url_for('home'))
 
 
 def get_uploaded_images():
+    """Returns a list of uploaded image filenames"""
     rootdir = os.getcwd()
-    # print(rootdir)
     filenames = []
     for subdir, dirs, files in os.walk(rootdir + '/uploads'):
         for file in files:
