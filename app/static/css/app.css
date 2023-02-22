@@ -32,3 +32,8 @@ body {
 .grid-container img {
     width: 15vw;
 }
+
+.alert {
+    color: green;
+    font-weight: bolder;
+}

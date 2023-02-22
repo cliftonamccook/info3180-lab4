@@ -122,6 +122,14 @@ def files():
     return render_template('files.html', filenames=files)
 
 
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    flash("You have successfully logged out")
+    return redirect(url_for('home'))
+
+
 def get_uploaded_images():
     rootdir = os.getcwd()
     # print(rootdir)
